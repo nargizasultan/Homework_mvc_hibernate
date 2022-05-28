@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Courses</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>CourseName</th>
+        <th>Duration</th>
+        <th>Company</th>
+        <th>Groups</th>
+        <th>Teacher</th>
+
+
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="course: ${courses}">
+        <td th:text="${course.id}"></td>
+        <td th:text="${course.courseName}"></td>
+        <td th:text="${course.duration}"></td>
+        <td th:text="${course.company}"></td>
+        <td th:text="${course.groups}"></td>
+        <td th:text="${course.teacher}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/api/courses/save}">
+        <button >save</button>
+    </a>
+
+</div>
+
+
+</body>
+</html>

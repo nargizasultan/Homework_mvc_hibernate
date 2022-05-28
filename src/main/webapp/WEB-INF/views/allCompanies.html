@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr >
+        <th>ID</th>
+        <th>CompanyName</th>
+        <th>LocatedCountry</th>
+        <th>Courses</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="company:${companyList}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td th:text="${company.courses}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/api/companies/save}">
+        <button>save</button>
+    </a>
+</div>
+
+</body>
+</html>
