@@ -30,6 +30,9 @@ public class Course {
     private List<Group> groups=new ArrayList<>();
     @OneToOne(mappedBy = "course")
     private Teacher teacher;
+    public void setGroup(Group group){
+        this.groups.add(group);
+    }
 
 
 }

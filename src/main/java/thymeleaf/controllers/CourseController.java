@@ -31,7 +31,7 @@ public class CourseController {
     }
 
     @GetMapping("/save/{companyId}")
-    public String showStudentSavePage(@PathVariable UUID companyId, Model model) {
+    public String showCourseSavePage(@PathVariable UUID companyId, Model model) {
         model.addAttribute("companyId", companyId);
         model.addAttribute("emptyCourse", new Course());
         return "save-new-course";
@@ -39,7 +39,7 @@ public class CourseController {
 
     }
     @PostMapping("/save/{companyId}")
-    public String saveStudent(Course course, @PathVariable UUID companyId){
+    public String saveCourse(Course course, @PathVariable UUID companyId){
         courseService.save(course, companyId);
         return "redirect:/api/courses/find/by/"+companyId;
 

@@ -28,5 +28,9 @@ public class Group {
     @OneToMany(mappedBy = "group")
     private List<Student>students=new ArrayList<>();
 
+    public void setCourse(Course course){
+        this.courses.add(course);
+    }
+
 
 }

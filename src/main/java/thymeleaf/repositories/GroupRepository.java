@@ -7,6 +7,7 @@ import thymeleaf.models.Group;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.transaction.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,7 +24,7 @@ public class GroupRepository {
     public void save(Group group) {
         entityManager.getTransaction().begin();
         entityManager.persist(group);
-    entityManager.getTransaction().commit();
+        entityManager.getTransaction().commit();
     }
 
 
@@ -41,5 +42,9 @@ public class GroupRepository {
         entityManager.createQuery("delete from Group g where g.id = ?1")
                 .setParameter(1, groupId)
                 .executeUpdate();
+    }
+
+    public List<Group> findByCourseId(UUID courseId) {
+        return entityManager.createQuery("select g from Group g where (select c from Course c where c.id = ?1) member of g.courses", Group.class).setParameter(1, courseId).getResultList();
     }
 }
