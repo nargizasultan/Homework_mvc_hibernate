@@ -15,6 +15,7 @@ public class CourseRepository {
     public CourseRepository(EntityManagerFactory entityManagerFactory) {
         this.entityManager = entityManagerFactory.createEntityManager();
     }
+
     public void save(Course course) {
         entityManager.getTransaction().begin();
         entityManager.persist(course);
@@ -34,4 +35,12 @@ public class CourseRepository {
     public void deleteById(UUID courseId) {
         entityManager.remove(entityManager.find(Course.class, courseId));
     }
+
+    public List<Course> findByCompanyId(UUID companyId) {
+        return entityManager
+                .createQuery("select s from Course s join Company c on  c.id = ?1", Course.class)
+                .setParameter(1, companyId)
+                .getResultList();
+    }
+
 }

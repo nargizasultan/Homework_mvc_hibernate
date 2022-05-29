@@ -27,7 +27,7 @@ public class CompanyController {
     }
     @GetMapping
     public String findAll(){
-        return "allCompanies";
+        return "all-companies";
     }
     @GetMapping("/save")
     public String saveCompany(Model model){

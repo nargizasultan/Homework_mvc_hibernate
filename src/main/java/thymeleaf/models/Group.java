@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -23,9 +24,9 @@ public class Group {
     private Date dateOfStart;
     private Date dateOfFinish;
     @ManyToMany()
-    private List<Course> courses;
+    private List<Course> courses=new ArrayList<>();
     @OneToMany(mappedBy = "group")
-    private List<Student>students;
+    private List<Student>students=new ArrayList<>();
 
 
 }

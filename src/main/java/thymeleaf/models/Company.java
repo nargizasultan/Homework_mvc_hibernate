@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 @Entity
@@ -18,8 +19,10 @@ public class Company {
     private UUID id;
     private String companyName;
     private String locatedCountry;
-    @OneToMany(mappedBy ="company" )
-    private List<Course>courses;
-
+    @OneToMany (mappedBy ="company" )
+    private List<Course>courses=new ArrayList<>();
+    public void setCourse(Course course) {
+        this.courses.add(course);
+    }
 
 }

@@ -1,11 +1,12 @@
 package thymeleaf.services;
 
+import org.springframework.stereotype.Service;
 import thymeleaf.models.Student;
 import thymeleaf.repositories.StudentRepository;
 
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class StudentService {
     private final StudentRepository studentRepository;
 

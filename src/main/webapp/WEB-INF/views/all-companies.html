@@ -21,7 +21,14 @@
         <td th:text="${company.id}"></td>
         <td th:text="${company.companyName}"></td>
         <td th:text="${company.locatedCountry}"></td>
-        <td th:text="${company.courses}"></td>
+
+
+        <td>
+            <a th:href="@{'courses/find/by/'+${company.id}}">
+                <button>courses</button>
+            </a>
+
+        </td>
 
     </tr>
 

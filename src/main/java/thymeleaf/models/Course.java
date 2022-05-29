@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,10 +24,14 @@ public class Course {
     private String courseName;
 
     private int  duration;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Company company;
     @ManyToMany(mappedBy = "courses")
-    private List<Group> groups;
+    private List<Group> groups=new ArrayList<>();
     @OneToOne(mappedBy = "course")
     private Teacher teacher;
+
+
 }
+
+
