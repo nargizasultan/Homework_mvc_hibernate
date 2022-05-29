@@ -1,7 +1,6 @@
 package thymeleaf.repositories;
 
 import org.springframework.stereotype.Repository;
-import thymeleaf.models.Student;
 import thymeleaf.models.Teacher;
 
 import javax.persistence.EntityManager;
@@ -37,5 +36,9 @@ public class TeacherRepository {
         entityManager.createQuery("delete from Teacher t where t.id = ?1")
                 .setParameter(1, teacherId)
                 .executeUpdate();
+    }
+
+    public List<Teacher> findByCourseId(UUID courseId) {
+        return entityManager.createQuery("select t from Teacher t join Course c on c.id=?1", Teacher.class).setParameter(1, courseId).getResultList();
     }
 }

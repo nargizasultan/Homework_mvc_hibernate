@@ -16,6 +16,7 @@
         <th>courseName</th>
         <th>duration</th>
         <th>Groups</th>
+        <th>Teacher</th>
 
 
     </tr>
@@ -28,6 +29,11 @@
         <td>
             <a th:href="@{'/api/groups/find/by/'+${course.id}}">
                 <button>groups</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/api/teachers/find/by/'+${course.id}}">
+                <button>teacher</button>
             </a>
         </td>
 
