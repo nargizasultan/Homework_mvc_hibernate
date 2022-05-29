@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import thymeleaf.models.Course;
 import thymeleaf.models.Group;
 import thymeleaf.services.GroupService;
 
@@ -31,14 +30,14 @@ public class GroupController {
         List<Group> groups = groupService.findByCourseId(courseId);
         model.addAttribute("courses", groups);
         model.addAttribute("courseId", courseId);
-        return "all-groups";
+        return "groups/all-groups";
     }
 
     @GetMapping("/save/{courseId}")
     public String showCourseSavePage(@PathVariable UUID courseId, Model model) {
         model.addAttribute("courseId", courseId);
         model.addAttribute("emptyGroup", new Group());
-        return "save-new-group";
+        return "groups/save-new-group";
 
 
     }

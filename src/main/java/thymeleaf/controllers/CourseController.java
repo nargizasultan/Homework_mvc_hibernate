@@ -27,14 +27,14 @@ public class CourseController {
         List<Course> courses = courseService.findByCompanyId(companyId);
         model.addAttribute("courses", courses);
         model.addAttribute("companyId", companyId);
-        return "all-courses";
+        return "courses/all-courses";
     }
 
     @GetMapping("/save/{companyId}")
     public String showCourseSavePage(@PathVariable UUID companyId, Model model) {
         model.addAttribute("companyId", companyId);
         model.addAttribute("emptyCourse", new Course());
-        return "save-new-course";
+        return "courses/save-new-course";
 
 
     }

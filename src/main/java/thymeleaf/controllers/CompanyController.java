@@ -27,12 +27,12 @@ public class CompanyController {
     }
     @GetMapping
     public String findAll(){
-        return "all-companies";
+        return "companies/all-companies";
     }
     @GetMapping("/save")
     public String saveCompany(Model model){
         model.addAttribute("emptyCompany", new Company());
-        return "save-new-company";
+        return "companies/save-new-company";
     }
     @PostMapping("/save")
     public String save(Company company){

@@ -31,7 +31,7 @@ public class StudentController {
     @GetMapping("/save")
     public String saveStudent(Model model){
         model.addAttribute("emptyStudent", new Student());
-        return "save-new-course";
+        return "courses/save-new-course";
     }
     @PostMapping("/save")
     public String save(Student student){

@@ -26,13 +26,13 @@ public class TeacherController {
         List<Teacher> teacher = teacherService.findByCourseId(courseId);
         model.addAttribute("courseId", courseId);
         model.addAttribute("teacher", teacher);
-        return "all-teachers";
+        return "teachers/all-teachers";
     }
     @GetMapping("/save/{courseId}")
     public String showTeacherSavePage(@PathVariable UUID courseId, Model model){
         model.addAttribute("courseId", courseId);
         model.addAttribute("emptyTeacher", new Teacher());
-        return "save-new-teacher";
+        return "teachers/save-new-teacher";
     }
     @PostMapping("/save/{courseId}")
     public String saveTeacher(@PathVariable UUID courseId, Teacher teacher){
