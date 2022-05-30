@@ -23,7 +23,7 @@ public class CourseController {
     }
     @GetMapping("find/by/{companyId}")
     public String findAllCoursesByCompanyId(@PathVariable UUID companyId, Model model) {
-
+        System.out.println(companyId);
         List<Course> courses = courseService.findByCompanyId(companyId);
         model.addAttribute("courses", courses);
         model.addAttribute("companyId", companyId);
