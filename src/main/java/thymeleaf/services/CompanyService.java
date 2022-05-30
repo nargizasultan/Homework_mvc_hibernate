@@ -30,4 +30,8 @@ public class CompanyService {
     public void removeById(UUID companyId) {
         companyRepository.removeById(companyId);
     }
+
+    public void update(UUID companyId, Company company) {
+        companyRepository.update(companyId, company);
+    }
 }

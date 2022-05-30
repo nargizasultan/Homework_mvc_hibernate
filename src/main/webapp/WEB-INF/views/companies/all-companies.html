@@ -13,6 +13,7 @@
         <th>CompanyName</th>
         <th>LocatedCountry</th>
         <th>Courses</th>
+        <th>Action</th>
     </tr>
 
     </thead>
@@ -26,6 +27,12 @@
         <td>
             <a th:href="@{'courses/find/by/'+${company.id}}">
                 <button>courses</button>
+            </a>
+
+        </td>
+        <td>
+            <a th:href="@{'/api/companies/update/'+${company.id}}">
+                <button>update</button>
             </a>
 
         </td>

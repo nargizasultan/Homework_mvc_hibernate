@@ -6,7 +6,7 @@
     <title>New Company</title>
 </head>
 <body>
-<form action="#" th:action="@{/api/companies/save}" method="post" th:object="${emptyCompany}">
+<form action="#" th:action="@{/api/companies/save}" th:method="post" th:object="${emptyCompany}">
     <label for="name">Name</label>
     <input id="name" type="text" th:field="${emptyCompany.companyName}" placeholder="example">
     <br><br>
