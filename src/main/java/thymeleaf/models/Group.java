@@ -21,10 +21,11 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String groupName;
-    private Date dateOfStart;
-    private Date dateOfFinish;
+    private String dateOfStart;
+    private String dateOfFinish;
     @ManyToMany()
     private List<Course> courses=new ArrayList<>();
+
     @OneToMany(mappedBy = "group")
     private List<Student>students=new ArrayList<>();
 

@@ -6,19 +6,20 @@
     <title>save new group</title>
 </head>
 <body>
-<form action="#" th:action="@{'/api/groups/save/'+${courseId}}" method="post" th:object="${emptyGroup}">
+<form action="#" th:action="@{'/api/groups/saveGroup/'+${courseId}}" method="post" th:object="${emptyGroup}">
 
     <label for="courseName">courseName</label>
     <input id="courseName" th:field="${emptyGroup.groupName}" placeholder="example">
     <br><br>
 
     <label for="dateOfStart">dateOfStart</label>
-    <input id="dateOfStart" th:field="${emptyGroup.dateOfStart}" placeholder="example">
+    <input id="dateOfStart" type="text" th:field="${emptyGroup.dateOfStart}" placeholder="example">
     <br><br>
 
     <label for="dateOfFinish">dateOfFinish</label>
-    <input id="dateOfFinish" th:field="${emptyGroup.dateOfFinish}" placeholder="example">
+    <input id="dateOfFinish" type="text" th:field="${emptyGroup.dateOfFinish}" placeholder="example">
     <br><br>
+
 
     <button type="submit">save</button>
 </form>
