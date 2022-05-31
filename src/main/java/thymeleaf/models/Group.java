@@ -32,6 +32,9 @@ public class Group {
     public void setCourse(Course course){
         this.courses.add(course);
     }
+    public void setStudent(Student student){
+        this.students.add(student);
+    }
 
 
 }

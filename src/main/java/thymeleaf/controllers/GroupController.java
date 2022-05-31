@@ -43,7 +43,6 @@ public class GroupController {
     }
     @PostMapping("/saveGroup/{courseId}")
     public String saveGroup(Group group, @PathVariable UUID courseId){
-        System.out.println("THis endpoint works");
         groupService.save(group, courseId);
         return "redirect:/api/groups/find/by/"+courseId;
     }

@@ -2,14 +2,12 @@ package thymeleaf.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import thymeleaf.models.Student;
 import thymeleaf.services.StudentService;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Controller
@@ -20,22 +18,30 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-    @ModelAttribute("students")
+    @ModelAttribute("studentList")
     public List<Student> courses(){
         return studentService.findAll();
     }
-    @GetMapping
-    public String findAllStudents(){
-        return "all-student";
+    @GetMapping("find/by/{groupId}")
+    public String findAllStudentsByGroupId(@PathVariable UUID groupId, Model model){
+        List<Student> students = studentService.findByGroupId(groupId);
+        model.addAttribute("students", students);
+        model.addAttribute("groupId", groupId);
+        return "all-students";
     }
-    @GetMapping("/save")
-    public String saveStudent(Model model){
+    @GetMapping("/save/{groupId}")
+    public String showStudentSavePage(@PathVariable UUID groupId, Model model){
         model.addAttribute("emptyStudent", new Student());
-        return "courses/save-new-course";
+        model.addAttribute("groupId", groupId);
+        return "save-new-student";
+
     }
-    @PostMapping("/save")
-    public String save(Student student){
-        studentService.save(student);
-        return "redirect:/api/students";
+    @PostMapping("/save/{groupId}")
+    public String saveStudent(@PathVariable UUID groupId, Student student){
+        studentService.save(student, groupId);
+        return "redirect:/api/students/find/by/"+groupId;
+
     }
+
+
 }

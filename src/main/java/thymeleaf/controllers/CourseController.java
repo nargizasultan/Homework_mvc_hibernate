@@ -3,7 +3,9 @@ package thymeleaf.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import thymeleaf.models.Company;
 import thymeleaf.models.Course;
+import thymeleaf.services.CompanyService;
 import thymeleaf.services.CourseService;
 
 import java.util.List;
@@ -13,9 +15,11 @@ import java.util.UUID;
 @RequestMapping("/api/courses")
 public class CourseController {
     private final CourseService courseService;
+    private final CompanyService companyService;
 
-    public CourseController(CourseService courseService) {
+    public CourseController(CourseService courseService, CompanyService companyService) {
         this.courseService = courseService;
+        this.companyService = companyService;
     }
     @ModelAttribute("courses")
     public List<Course>courses(){
@@ -23,7 +27,7 @@ public class CourseController {
     }
     @GetMapping("find/by/{companyId}")
     public String findAllCoursesByCompanyId(@PathVariable UUID companyId, Model model) {
-        System.out.println(companyId);
+
         List<Course> courses = courseService.findByCompanyId(companyId);
         model.addAttribute("courses", courses);
         model.addAttribute("companyId", companyId);
@@ -43,6 +47,14 @@ public class CourseController {
         courseService.save(course, companyId);
         return "redirect:/api/courses/find/by/"+companyId;
 
+    }
+    @GetMapping("/update/{companyId}/{courseId}")
+    public String updateCourse(Model model, @PathVariable UUID companyId, @PathVariable UUID courseId){
+        Course course = courseService.findById(courseId);
+        Company company = companyService.findById(companyId);
+        model.addAttribute("updateCourse", course);
+        model.addAttribute("updateCourse", company);
+        return "courses/update-course";
     }
 
 

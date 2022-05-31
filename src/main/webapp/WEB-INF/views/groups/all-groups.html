@@ -13,6 +13,7 @@
         <th>groupName</th>
         <th>dateOfStart</th>
         <th>dateOfFinish</th>
+        <th>Students</th>
 
     </tr>
 
@@ -23,6 +24,11 @@
         <td th:text="${group.groupName}"></td>
         <td th:text="${group.dateOfStart}"></td>
         <td th:text="${group.dateOfFinish}"></td>
+        <td>
+            <a th:href="@{'/api/students/find/by/'+${group.id}}">
+                <button>students</button>
+            </a>
+        </td>
 
     </tr>
 

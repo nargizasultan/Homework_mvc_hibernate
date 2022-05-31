@@ -40,4 +40,7 @@ public class StudentRepository {
     }
 
 
+    public List<Student> findByGroupId(UUID groupId) {
+        return entityManager.createQuery("select s from Student s join Group g on g.id=?1", Student.class).setParameter(1, groupId).getResultList();
+    }
 }

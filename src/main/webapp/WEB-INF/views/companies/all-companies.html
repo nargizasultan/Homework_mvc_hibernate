@@ -8,7 +8,7 @@
 <body>
 <table>
     <thead>
-    <tr >
+    <tr>
         <th>ID</th>
         <th>CompanyName</th>
         <th>LocatedCountry</th>
@@ -22,20 +22,33 @@
         <td th:text="${company.id}"></td>
         <td th:text="${company.companyName}"></td>
         <td th:text="${company.locatedCountry}"></td>
-
-
         <td>
             <a th:href="@{'courses/find/by/'+${company.id}}">
                 <button>courses</button>
             </a>
-
         </td>
+
+
         <td>
             <a th:href="@{'/api/companies/update/'+${company.id}}">
                 <button>update</button>
             </a>
 
         </td>
+<!--        <td>-->
+<!--            <a th:href="@{'/api/companies/delete/'+${company.id}}">-->
+<!--                <button>update</button>-->
+<!--            </a>-->
+
+<!--        </td>-->
+
+
+<!--        <td style="border-radius: 8px">-->
+<!--            <form th:method="DELETE" th:action="@{/delete/(companyId=${company.getId()})}">-->
+<!--                <input style="color: blue" class="button" type="submit" value="delete"/>-->
+<!--            </form>-->
+<!--        </td>-->
+
 
     </tr>
 

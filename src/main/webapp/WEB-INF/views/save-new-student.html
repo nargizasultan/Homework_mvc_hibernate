@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Student</title>
+</head>
+<body>
+<!--private UUID id;
+
+    private String firstName;
+
+    private String email;
+    private String lastName;
+    private StudyFormat studyFormat;
+    @ManyToOne
+    private Group group;-->
+<form action="#"
+      th:action="@{'/api/students/save/' + ${groupId}}"
+      method="post"
+      th:object="${emptyStudent}">
+
+    <label for="firstName">firstName</label>
+    <input id="firstName" th:field="${emptyStudent.firstName}" placeholder="example">
+    <br><br>
+
+    <label for="email">email</label>
+    <input id="email" type="email" th:field="${emptyStudent.email}" placeholder="example@gmail.com">
+    <br><br>
+
+    <label for="lastName">lastName</label>
+    <input id="lastName" th:field="${emptyStudent.lastName}" placeholder="example">
+    <br><br>
+
+    <label for="studyFormat">studyFormat</label>
+    <input id="studyFormat"  th:field="${emptyStudent.studyFormat}" placeholder="example">
+    <br><br>
+
+
+
+
+    <button type="submit">save</button>
+</form>
+
+</body>
+</html>

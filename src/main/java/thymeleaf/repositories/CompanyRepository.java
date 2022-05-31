@@ -35,9 +35,7 @@ public class CompanyRepository {
     }
 
     public void removeById(UUID companyId) {
-        entityManager.createQuery("delete from Company c where c.id = ?1")
-                .setParameter(1, companyId)
-                .executeUpdate();
+        entityManager.remove(findById(companyId));
     }
 
     public void update(UUID companyId, Company newCompany) {
@@ -46,7 +44,7 @@ public class CompanyRepository {
 //                        "c.locatedCountry=:locatedCountry  where c.id=:id", Company.class).
 //                setParameter("companyName", newCompany.getCompanyName()).
 //                setParameter("locatedCountry", newCompany.getLocatedCountry()).
-//                setParameter("id", companyId).executeUpdate();
+//                setParameter(s"id", companyId).executeUpdate();
 
         Company company = findById(companyId);
         company.setCompanyName(newCompany.getCompanyName());

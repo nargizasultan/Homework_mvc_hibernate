@@ -52,4 +52,11 @@ public class CompanyController {
     }
 
 
+//    @GetMapping  ("/delete/{companyId}")
+//    public String delete(@PathVariable ("companyId")UUID companyId){
+//        companyService.removeById(companyId);
+//        return "redirect:/api/companies";
+//    }
+
+
 }

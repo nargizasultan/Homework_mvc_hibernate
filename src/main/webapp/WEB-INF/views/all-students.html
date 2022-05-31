@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All students</title>
+
+<!--    private UUID id;
+
+    private String firstName;
+
+    private String email;
+    private String lastName;
+    private StudyFormat studyFormat;
+    @ManyToOne
+    private Group group;-->
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>firstName</th>
+        <th>email</th>
+        <th>studyFormat</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.studyFormat}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <a th:href="@{'/api/students/save/' + ${groupId}}">
+        <button>save</button>
+    </a>
+</div>
+
+<br><br>
+<div>
+    <a th:href="@{/api/companies}">
+        <button>go back</button>
+    </a>
+</div>
+
+
+</body>
+</html>
