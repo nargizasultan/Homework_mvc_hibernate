@@ -9,7 +9,7 @@ import thymeleaf.repositories.TeacherRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
+
 @Service
 public class TeacherService {
     private final TeacherRepository teacherRepository;
@@ -20,7 +20,7 @@ public class TeacherService {
         this.courseRepository = courseRepository;
     }
     @Transactional
-    public void save(Teacher teacher, UUID courseId) {
+    public void save(Teacher teacher, Long courseId) {
         Course course = courseRepository.findById(courseId);
         course.setTeacher(teacher);
         teacher.setCourse(course);
@@ -28,7 +28,7 @@ public class TeacherService {
     }
 
     @Transactional
-    public Teacher findById(UUID teacherId) {
+    public Teacher findById(Long teacherId) {
         return teacherRepository.findById(teacherId);
     }
 
@@ -37,15 +37,15 @@ public class TeacherService {
         return teacherRepository.findAll();
     }
     @Transactional
-    public void removeById(UUID teacherId) {
+    public void removeById(Long teacherId) {
         teacherRepository.removeById(teacherId);
     }
     @Transactional
-    public List<Teacher> findByCourseId(UUID courseId) {
+    public List<Teacher> findByCourseId(Long courseId) {
         return teacherRepository.findByCourseId(courseId);
     }
     @Transactional
-    public void update(UUID teacherId, Teacher teacher) {
+    public void update(Long teacherId, Teacher teacher) {
         teacherRepository.update(teacherId, teacher);
     }
 }

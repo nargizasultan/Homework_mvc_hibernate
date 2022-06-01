@@ -19,7 +19,7 @@ import static javax.persistence.CascadeType.*;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String courseName;
 

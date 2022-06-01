@@ -43,7 +43,7 @@ public class CompanyController {
     }
 
     @GetMapping("/update/{companyId}")
-    public String updateCompany(Model model, @PathVariable("companyId") UUID companyId) {
+    public String updateCompany(Model model, @PathVariable("companyId") Long companyId) {
 
         model.addAttribute("updateCompany", companyService.findById(companyId));
         return "companies/update-company";
@@ -51,13 +51,13 @@ public class CompanyController {
 
     @PostMapping("/update/{companyId}")
     public String update(Company company,
-                         @PathVariable("companyId") UUID companyId) {
+                         @PathVariable("companyId") Long companyId) {
         companyService.update(companyId, company);
         return "redirect:/api/companies";
     }
 
     @GetMapping("/delete/{companyId}")
-    public String delete(@PathVariable UUID companyId) {
+    public String delete(@PathVariable Long companyId) {
 
         companyService.removeById(companyId);
 

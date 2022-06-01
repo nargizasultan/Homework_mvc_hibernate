@@ -6,7 +6,7 @@ import thymeleaf.repositories.CompanyRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
+
 @Service
 public class CompanyService {
     private final CompanyRepository companyRepository;
@@ -20,7 +20,7 @@ public class CompanyService {
     }
 
     @Transactional
-    public Company findById(UUID companyId) {
+    public Company findById(Long companyId) {
         return companyRepository.findById(companyId);
     }
     @Transactional
@@ -29,11 +29,11 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public void removeById(UUID companyId) {
+    public void removeById(Long companyId) {
         companyRepository.removeById(companyId);
     }
     @Transactional
-    public void update(UUID companyId, Company company) {
+    public void update(Long companyId, Company company) {
         companyRepository.update(companyId, company);
     }
 }

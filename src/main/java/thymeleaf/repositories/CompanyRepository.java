@@ -29,7 +29,7 @@ public class CompanyRepository {
     }
 
     @Transactional
-    public Company findById(UUID companyId) {
+    public Company findById(Long companyId) {
         return entityManager.find(Company.class, companyId);
     }
 
@@ -39,11 +39,11 @@ public class CompanyRepository {
                 .getResultList();
     }
     @Transactional
-    public void removeById(UUID companyId) {
+    public void removeById(Long companyId) {
         entityManager.remove(entityManager.find(Company.class, companyId));
     }
     @Transactional
-    public void update(UUID companyId, Company newCompany) {
+    public void update(Long companyId, Company newCompany) {
 
         Company company = findById(companyId);
         company.setCompanyName(newCompany.getCompanyName());

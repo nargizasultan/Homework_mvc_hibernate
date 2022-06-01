@@ -26,7 +26,7 @@ public class CourseRepository {
 
     }
     @Transactional
-    public Course findById(UUID courseId) {
+    public Course findById(Long courseId) {
         return entityManager.find(Course.class, courseId);
     }
     @Transactional
@@ -36,11 +36,11 @@ public class CourseRepository {
                 .getResultList();
     }
     @Transactional
-    public void deleteById(UUID courseId) {
+    public void deleteById(Long courseId) {
         entityManager.remove(entityManager.find(Course.class, courseId));
     }
     @Transactional
-    public List<Course> findByCompanyId(UUID companyId) {
+    public List<Course> findByCompanyId(Long companyId) {
         return entityManager
                 .createQuery("select s from Course s where s.company.id = ?1", Course.class)
                 .setParameter(1, companyId)
@@ -48,7 +48,7 @@ public class CourseRepository {
     }
 
     @Transactional
-    public void update(UUID courseID, Course newCourse) {
+    public void update(Long courseID, Course newCourse) {
         Course course1 = findById(courseID);
 
         course1.setCourseName(newCourse.getCourseName());

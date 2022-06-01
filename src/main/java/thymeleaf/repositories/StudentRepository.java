@@ -27,7 +27,7 @@ public class StudentRepository {
     }
 
     @Transactional
-    public Student findById(UUID studentId) {
+    public Student findById(Long studentId) {
         return entityManager.find(Student.class, studentId);
     }
 
@@ -37,16 +37,16 @@ public class StudentRepository {
                 .getResultList();
     }
     @Transactional
-    public void removeById(UUID studentId) {
+    public void removeById(Long studentId) {
         entityManager.remove(entityManager.find(Student.class, studentId));
     }
 
     @Transactional
-    public List<Student> findByGroupId(UUID groupId) {
+    public List<Student> findByGroupId(Long groupId) {
         return entityManager.createQuery("select s from Student s join Group g on g.id=?1", Student.class).setParameter(1, groupId).getResultList();
     }
     @Transactional
-    public void update(UUID studentId, Student student) {
+    public void update(Long studentId, Student student) {
         Student student1 = findById(studentId);
         student1.setFirstName(student.getFirstName());
        student1.setEmail(student.getEmail());

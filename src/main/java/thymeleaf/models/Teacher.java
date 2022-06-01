@@ -17,7 +17,7 @@ import static javax.persistence.CascadeType.*;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     private String firstName;
     private String email;
     private String lastName;

@@ -26,7 +26,7 @@ public class TeacherRepository {
     }
 
     @Transactional
-    public Teacher findById(UUID teacherId) {
+    public Teacher findById(Long teacherId) {
         return entityManager.find(Teacher.class, teacherId);
     }
 
@@ -36,16 +36,16 @@ public class TeacherRepository {
                 .getResultList();
     }
     @Transactional
-    public void removeById(UUID teacherId) {
+    public void removeById(Long teacherId) {
         entityManager.remove(entityManager.find(Teacher.class, teacherId));
     }
     @Transactional
 
-    public List<Teacher> findByCourseId(UUID courseId) {
+    public List<Teacher> findByCourseId(Long courseId) {
         return entityManager.createQuery("select t from Teacher t join Course c on c.id=?1", Teacher.class).setParameter(1, courseId).getResultList();
     }
     @Transactional
-    public void update(UUID teacherId, Teacher teacher) {
+    public void update(Long teacherId, Teacher teacher) {
         Teacher teacher1 = findById(teacherId);
         teacher1.setFirstName(teacher.getFirstName());
         teacher1.setEmail(teacher.getEmail());

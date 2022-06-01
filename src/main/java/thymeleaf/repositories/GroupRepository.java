@@ -30,7 +30,7 @@ public class GroupRepository {
     }
 
     @Transactional
-    public Group findById(UUID groupID) {
+    public Group findById(Long groupID) {
         return entityManager.find(Group.class, groupID);
     }
 
@@ -40,15 +40,15 @@ public class GroupRepository {
                 .getResultList();
     }
     @Transactional
-    public void removeById(UUID groupId) {
+    public void removeById(Long groupId) {
         entityManager.remove(entityManager.find(Group.class,groupId));
     }
     @Transactional
-    public List<Group> findByCourseId(UUID courseId) {
+    public List<Group> findByCourseId(Long courseId) {
         return entityManager.createQuery("select g from Group g where (select c from Course c where c.id = ?1) member of g.courses", Group.class).setParameter(1, courseId).getResultList();
     }
     @Transactional
-    public void update(UUID groupId, Group group) {
+    public void update(Long groupId, Group group) {
         Group group1 = findById(groupId);
         group1.setGroupName(group.getGroupName());
         group1.setDateOfStart(group.getDateOfStart());

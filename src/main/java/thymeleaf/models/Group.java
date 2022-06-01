@@ -22,7 +22,7 @@ import static javax.persistence.CascadeType.MERGE;
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     private String groupName;
     private String dateOfStart;
     private String dateOfFinish;

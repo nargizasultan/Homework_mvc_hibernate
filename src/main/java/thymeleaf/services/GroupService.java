@@ -8,7 +8,7 @@ import thymeleaf.repositories.GroupRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
+
 @Service
 public class GroupService {
     private final GroupRepository groupRepository;
@@ -19,7 +19,7 @@ public class GroupService {
         this.courseRepository = courseRepository;
     }
     @Transactional
-    public void save(Group group, UUID courseId) {
+    public void save(Group group, Long courseId) {
         Course course = courseRepository.findById(courseId);
         group.setCourse(course);
         course.setGroup(group);
@@ -27,7 +27,7 @@ public class GroupService {
     }
 
     @Transactional
-    public Group findById(UUID groupID) {
+    public Group findById(Long groupID) {
         return groupRepository.findById(groupID);
     }
 
@@ -36,15 +36,15 @@ public class GroupService {
         return groupRepository.findAll();
     }
     @Transactional
-    public void removeById(UUID groupId) {
+    public void removeById(Long groupId) {
         groupRepository.removeById(groupId);
     }
     @Transactional
-    public List<Group> findByCourseId(UUID courseId) {
+    public List<Group> findByCourseId(Long courseId) {
         return groupRepository.findByCourseId(courseId);
     }
     @Transactional
-    public void update(UUID groupId, Group group) {
+    public void update(Long groupId, Group group) {
         groupRepository.update(groupId, group);
     }
 }

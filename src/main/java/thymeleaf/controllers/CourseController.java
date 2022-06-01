@@ -9,7 +9,7 @@ import thymeleaf.services.CompanyService;
 import thymeleaf.services.CourseService;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @Controller
 @RequestMapping("/api/courses")
@@ -26,7 +26,7 @@ public class CourseController {
         return courseService.findAll();
     }
     @GetMapping("find/by/{companyId}")
-    public String findAllCoursesByCompanyId(@PathVariable UUID companyId, Model model) {
+    public String findAllCoursesByCompanyId(@PathVariable Long companyId, Model model) {
 
         List<Course> courses = courseService.findByCompanyId(companyId);
         model.addAttribute("courses", courses);
@@ -35,35 +35,35 @@ public class CourseController {
     }
 
     @GetMapping("/save/{companyId}")
-    public String showCourseSavePage(@PathVariable UUID companyId, Model model) {
+    public String showCourseSavePage(@PathVariable Long companyId, Model model) {
         model.addAttribute("companyId", companyId);
         model.addAttribute("emptyCourse", new Course());
         return "courses/save-new-course";
     }
     @PostMapping("/save/{companyId}")
-    public String saveCourse(Course course, @PathVariable UUID companyId){
+    public String saveCourse(Course course, @PathVariable Long companyId){
         courseService.save(course, companyId);
         return "redirect:/api/courses/find/by/"+companyId;
 
     }
     @GetMapping("/update/{courseId}")
-    public String updateCourse(Model model, @PathVariable UUID courseId){
+    public String updateCourse(Model model, @PathVariable Long courseId){
         Course course = courseService.findById(courseId);
         model.addAttribute("updateCourse", course);
         return "courses/update-course";
     }
 
     @PostMapping ("/update/{courseId}")
-    public String update(Course course, @PathVariable UUID courseId){
+    public String update(Course course, @PathVariable Long courseId){
         Course byId = courseService.findById(courseId);
-        UUID id = byId.getCompany().getId();
+        Long id = byId.getCompany().getId();
         courseService.update(courseId, course);
         return "redirect:/api/courses/find/by/" + id;
     }
     @GetMapping("/delete/{courseId}")
-    public String delete(@PathVariable UUID courseId){
+    public String delete(@PathVariable Long courseId){
         Course course = courseService.findById(courseId);
-        UUID id = course.getCompany().getId();
+        Long id = course.getCompany().getId();
         courseService.deleteById(courseId);
         return "redirect:/api/courses/find/by/"+id;
     }

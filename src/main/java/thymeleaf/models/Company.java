@@ -20,7 +20,7 @@ import static javax.persistence.CascadeType.*;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     private String companyName;
     private String locatedCountry;
 
