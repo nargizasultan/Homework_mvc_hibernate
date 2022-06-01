@@ -5,37 +5,41 @@ import thymeleaf.models.Course;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
 @Repository
 public class CourseRepository {
+    @PersistenceContext
     private final EntityManager entityManager;
 
     public CourseRepository(EntityManagerFactory entityManagerFactory) {
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
+    @Transactional
     public void save(Course course) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(course);
-        entityManager.getTransaction().commit();
-    }
 
+        entityManager.persist(course);
+
+    }
+    @Transactional
     public Course findById(UUID courseId) {
         return entityManager.find(Course.class, courseId);
     }
-
+    @Transactional
     public List<Course> findAll() {
         return entityManager
                 .createQuery("select c from Course c", Course.class)
                 .getResultList();
     }
-
+    @Transactional
     public void deleteById(UUID courseId) {
         entityManager.remove(entityManager.find(Course.class, courseId));
     }
-
+    @Transactional
     public List<Course> findByCompanyId(UUID companyId) {
         return entityManager
                 .createQuery("select s from Course s where s.company.id = ?1", Course.class)
@@ -43,7 +47,7 @@ public class CourseRepository {
                 .getResultList();
     }
 
-
+    @Transactional
     public void update(UUID courseID, Course newCourse) {
         Course course1 = findById(courseID);
 

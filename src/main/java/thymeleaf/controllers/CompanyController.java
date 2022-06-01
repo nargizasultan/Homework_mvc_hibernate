@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import thymeleaf.models.Company;
+import thymeleaf.models.Course;
 import thymeleaf.services.CompanyService;
 
 import java.util.List;
@@ -51,12 +52,14 @@ public class CompanyController {
         return "redirect:/api/companies";
     }
 
+    @GetMapping("/delete/{companyId}")
+    public String delete(@PathVariable UUID companyId){
+        Company company = companyService.findById(companyId);
+        Course course = company.getCourses().get(0);
+        companyService.removeById(companyId);
 
-//    @GetMapping  ("/delete/{companyId}")
-//    public String delete(@PathVariable ("companyId")UUID companyId){
-//        companyService.removeById(companyId);
-//        return "redirect:/api/companies";
-//    }
+        return "redirect:/api/companies";
+    }
 
 
 }

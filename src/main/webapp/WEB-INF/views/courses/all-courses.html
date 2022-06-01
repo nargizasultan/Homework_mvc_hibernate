@@ -8,7 +8,7 @@
     <title>All Courses</title>
 </head>
 <body>
-<table>
+<table class="table table-bordered border-primary">
     <thead>
     <tr>
 
@@ -42,6 +42,10 @@
         <td>
             <a th:href="@{'/api/courses/update/'+${course.id}}">
                 <button>update</button>
+            </a>
+
+            <a th:href="@{'/api/courses/delete/'+${course.id}}">
+                <button>delete</button>
             </a>
 
         </td>

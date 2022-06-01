@@ -4,12 +4,12 @@ package thymeleaf.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static javax.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "courses")
@@ -23,14 +23,21 @@ public class Course {
 
     private String courseName;
 
-    private int  duration;
-    @ManyToOne
+    private int duration;
+    @ManyToOne(cascade = {CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH})
+    @JoinColumn(name = "company_id")
     private Company company;
-    @ManyToMany(mappedBy = "courses")
-    private List<Group> groups=new ArrayList<>();
-    @OneToOne(mappedBy = "course")
+    @ManyToMany(mappedBy = "courses", cascade = {PERSIST,DETACH,REMOVE})
+    private List<Group> groups = new ArrayList<>();
+
+    @OneToOne(mappedBy = "course",
+            cascade = {PERSIST,MERGE,DETACH,REFRESH,REMOVE},
+            orphanRemoval = true)
     private Teacher teacher;
-    public void setGroup(Group group){
+
+    public void setGroup(Group group) {
         this.groups.add(group);
     }
 

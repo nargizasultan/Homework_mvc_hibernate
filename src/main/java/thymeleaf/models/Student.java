@@ -7,6 +7,8 @@ import thymeleaf.enums.StudyFormat;
 import javax.persistence.*;
 import java.util.UUID;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "students")
 @Getter
@@ -22,7 +24,7 @@ public class Student {
     private String email;
     private String lastName;
     private StudyFormat studyFormat;
-    @ManyToOne
+    @ManyToOne(cascade = MERGE)
     private Group group;
 
 }

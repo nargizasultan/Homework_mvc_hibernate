@@ -26,24 +26,24 @@ public class GroupService {
         groupRepository.save(group);
     }
 
-
+    @Transactional
     public Group findById(UUID groupID) {
         return groupRepository.findById(groupID);
     }
 
-
+    @Transactional
     public List<Group> findAll() {
         return groupRepository.findAll();
     }
-
+    @Transactional
     public void removeById(UUID groupId) {
         groupRepository.removeById(groupId);
     }
-
+    @Transactional
     public List<Group> findByCourseId(UUID courseId) {
         return groupRepository.findByCourseId(courseId);
     }
-
+    @Transactional
     public void update(UUID groupId, Group group) {
         groupRepository.update(groupId, group);
     }

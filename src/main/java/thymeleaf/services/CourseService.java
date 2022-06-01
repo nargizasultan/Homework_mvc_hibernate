@@ -25,25 +25,25 @@ public class CourseService {
         course.setCompany(company);
         courseRepository.save(course);
     }
-
+    @Transactional
     public Course findById(UUID courseId) {
         return courseRepository.findById(courseId);
     }
-
+    @Transactional
     public List<Course> findAll() {
         return courseRepository.findAll();
     }
-
+    @Transactional
     public void deleteById(UUID courseId) {
         courseRepository.deleteById(courseId);
     }
 
-
+    @Transactional
     public List<Course> findByCompanyId(UUID companyId) {
         return courseRepository.findByCompanyId(companyId);
     }
 
-
+    @Transactional
     public void update(UUID courseID, Course course) {
          courseRepository.update(courseID,course );
     }

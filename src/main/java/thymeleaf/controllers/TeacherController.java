@@ -3,6 +3,7 @@ package thymeleaf.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import thymeleaf.models.Student;
 import thymeleaf.models.Teacher;
 import thymeleaf.services.TeacherService;
 
@@ -38,6 +39,26 @@ public class TeacherController {
     public String saveTeacher(@PathVariable UUID courseId, Teacher teacher){
         teacherService.save(teacher, courseId);
         return "redirect:/api/teachers/find/by/"+courseId;
+    }
+
+    @GetMapping("/update/{teacherId}")
+    public String updateTeacher(Model model, @PathVariable UUID teacherId){
+        Teacher teacher = teacherService.findById(teacherId);
+
+        model.addAttribute("updateTeacher", teacher);
+        return "teachers/update-teacher";
+    }
+
+    @PostMapping ("/update/{teacherId}")
+    public String update(Teacher teacher, @PathVariable UUID teacherId){
+
+        Teacher byId = teacherService.findById(teacherId);
+
+        UUID id = byId.getCourse().getId();
+
+        teacherService.update(teacherId, teacher);
+
+        return "redirect:/api/teachers/find/by/" + id;
     }
 
 

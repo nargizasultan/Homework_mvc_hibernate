@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <title>All students</title>
 
-<!--    private UUID id;
+    <!--    private UUID id;
 
-    private String firstName;
+        private String firstName;
 
-    private String email;
-    private String lastName;
-    private StudyFormat studyFormat;
-    @ManyToOne
-    private Group group;-->
+        private String email;
+        private String lastName;
+        private StudyFormat studyFormat;
+        @ManyToOne
+        private Group group;-->
 </head>
 <body>
-<table>
+<table class="table table-bordered border-primary">
     <thead>
     <tr>
 
@@ -24,7 +24,7 @@
         <th>firstName</th>
         <th>email</th>
         <th>studyFormat</th>
-
+        <th>Actions</th>
 
 
     </tr>
@@ -35,6 +35,13 @@
         <td th:text="${student.firstName}"></td>
         <td th:text="${student.email}"></td>
         <td th:text="${student.studyFormat}"></td>
+
+        <td>
+            <a th:href="@{'/api/students/update/'+${student.id}}">
+                <button>update</button>
+            </a>
+
+        </td>
     </tr>
     </tbody>
 </table>

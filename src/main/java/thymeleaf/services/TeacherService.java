@@ -27,21 +27,25 @@ public class TeacherService {
         teacherRepository.save(teacher);
     }
 
-
+    @Transactional
     public Teacher findById(UUID teacherId) {
         return teacherRepository.findById(teacherId);
     }
 
-
+    @Transactional
     public List<Teacher> findAll() {
         return teacherRepository.findAll();
     }
-
+    @Transactional
     public void removeById(UUID teacherId) {
         teacherRepository.removeById(teacherId);
     }
-
+    @Transactional
     public List<Teacher> findByCourseId(UUID courseId) {
         return teacherRepository.findByCourseId(courseId);
+    }
+    @Transactional
+    public void update(UUID teacherId, Teacher teacher) {
+        teacherRepository.update(teacherId, teacher);
     }
 }

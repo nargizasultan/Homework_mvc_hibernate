@@ -6,17 +6,15 @@
     <title>All Teachers</title>
 </head>
 <body>
-<table>
+<table class="table table-bordered border-primary">
     <thead>
-<!--    private UUID id;
-    private String firstName;
-    private String email;
-    private String lastName;-->
+
     <tr>
         <th>ID</th>
         <th>firstName</th>
         <th>email</th>
         <th>lastName</th>
+        <th>Actions</th>
 
 
     </tr>
@@ -28,6 +26,13 @@
         <td th:text="${teacher.firstName}"></td>
         <td th:text="${teacher.email}"></td>
         <td th:text="${teacher.lastName}"></td>
+
+        <td>
+            <a th:href="@{'/api/teachers/update/'+${teacher.id}}">
+                <button>update</button>
+            </a>
+
+        </td>
 
 
     </tr>

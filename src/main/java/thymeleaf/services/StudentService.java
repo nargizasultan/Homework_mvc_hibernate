@@ -26,21 +26,25 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-
+    @Transactional
     public Student findById(UUID studentId) {
         return studentRepository.findById(studentId);
     }
 
-
+    @Transactional
     public List<Student> findAll() {
         return studentRepository.findAll();
     }
-
+    @Transactional
     public void removeById(UUID studentId) {
         studentRepository.removeById(studentId);
     }
-
+    @Transactional
     public List<Student> findByGroupId(UUID groupId) {
         return studentRepository.findByGroupId(groupId);
+    }
+    @Transactional
+    public void update(UUID studentId, Student student) {
+        studentRepository.update(studentId,student );
     }
 }

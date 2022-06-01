@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.MERGE;
+
 @Entity
 @Table(name = "groups")
 @Getter
@@ -23,10 +26,10 @@ public class Group {
     private String groupName;
     private String dateOfStart;
     private String dateOfFinish;
-    @ManyToMany()
+    @ManyToMany
     private List<Course> courses=new ArrayList<>();
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student>students=new ArrayList<>();
 
     public void setCourse(Course course){

@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static javax.persistence.CascadeType.*;
+
+
 @Entity
 @Table(name = "companies")
 @Getter
@@ -19,8 +23,12 @@ public class Company {
     private UUID id;
     private String companyName;
     private String locatedCountry;
-    @OneToMany (mappedBy ="company" )
-    private List<Course>courses=new ArrayList<>();
+
+    @OneToMany(mappedBy = "company",
+            cascade = {MERGE, DETACH,
+                    REMOVE,REFRESH} )
+    private List<Course> courses = new ArrayList<>();
+
     public void setCourse(Course course) {
         this.courses.add(course);
     }

@@ -7,6 +7,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.UUID;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "teachers")
 @Getter
@@ -19,7 +21,7 @@ public class Teacher {
     private String firstName;
     private String email;
     private String lastName;
-    @OneToOne
+    @OneToOne(cascade = ALL)
     private Course course;
 
 

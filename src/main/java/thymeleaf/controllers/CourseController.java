@@ -62,4 +62,11 @@ public class CourseController {
         courseService.update(courseId, course);
         return "redirect:/api/courses/find/by/" + id;
     }
+    @GetMapping("/delete/{courseId}")
+    public String delete(@PathVariable UUID courseId){
+        Course course = courseService.findById(courseId);
+        UUID id = course.getCompany().getId();
+        courseService.deleteById(courseId);
+        return "redirect:/api/courses/find/by/"+id;
+    }
 }
