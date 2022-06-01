@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import thymeleaf.models.Course;
 import thymeleaf.models.Group;
 import thymeleaf.services.GroupService;
 
@@ -45,5 +46,22 @@ public class GroupController {
     public String saveGroup(Group group, @PathVariable UUID courseId){
         groupService.save(group, courseId);
         return "redirect:/api/groups/find/by/"+courseId;
+    }
+
+    @GetMapping("/update/{groupId}")
+    public String updateGroup(Model model, @PathVariable UUID groupId){
+        Group group = groupService.findById(groupId);
+        model.addAttribute("updateGroup", group);
+        return "groups/update-group";
+    }
+
+    @PostMapping ("/update/{groupId}")
+    public String update(Group group, @PathVariable UUID groupId){
+
+        Group byId = groupService.findById(groupId);
+        UUID id = byId.getCourses().get(0).getId();
+        groupService.update(groupId, group);
+
+        return "redirect:/api/groups/find/by/" + id;
     }
 }

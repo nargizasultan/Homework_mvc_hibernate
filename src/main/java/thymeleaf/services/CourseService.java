@@ -44,5 +44,7 @@ public class CourseService {
     }
 
 
-
+    public void update(UUID courseID, Course course) {
+         courseRepository.update(courseID,course );
+    }
 }

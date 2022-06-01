@@ -14,6 +14,7 @@
         <th>dateOfStart</th>
         <th>dateOfFinish</th>
         <th>Students</th>
+        <th>Actions</th>
 
     </tr>
 
@@ -28,6 +29,13 @@
             <a th:href="@{'/api/students/find/by/'+${group.id}}">
                 <button>students</button>
             </a>
+        </td>
+
+        <td>
+            <a th:href="@{'/api/groups/update/'+${group.id}}">
+                <button>update</button>
+            </a>
+
         </td>
 
     </tr>

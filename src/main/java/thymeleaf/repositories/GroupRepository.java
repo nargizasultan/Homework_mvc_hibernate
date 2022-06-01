@@ -47,4 +47,12 @@ public class GroupRepository {
     public List<Group> findByCourseId(UUID courseId) {
         return entityManager.createQuery("select g from Group g where (select c from Course c where c.id = ?1) member of g.courses", Group.class).setParameter(1, courseId).getResultList();
     }
+
+    public void update(UUID groupId, Group group) {
+        Group group1 = findById(groupId);
+        group1.setGroupName(group.getGroupName());
+        group1.setDateOfStart(group.getDateOfStart());
+        group1.setDateOfFinish(group.getDateOfFinish());
+        entityManager.persist(group1);
+    }
 }

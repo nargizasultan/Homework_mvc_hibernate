@@ -44,4 +44,7 @@ public class GroupService {
         return groupRepository.findByCourseId(courseId);
     }
 
+    public void update(UUID groupId, Group group) {
+        groupRepository.update(groupId, group);
+    }
 }

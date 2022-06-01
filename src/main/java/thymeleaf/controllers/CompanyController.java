@@ -45,7 +45,7 @@ public class CompanyController {
         return "companies/update-company";
     }
     @PostMapping ("/update/{companyId}")
-    public String update(@ModelAttribute("update") Company company,
+    public String update(Company company,
                              @PathVariable ("companyId")UUID companyId){
         companyService.update(companyId, company);
         return "redirect:/api/companies";

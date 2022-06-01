@@ -39,12 +39,6 @@ public class CompanyRepository {
     }
 
     public void update(UUID companyId, Company newCompany) {
-//        entityManager.createQuery
-//                ("update Company c set c.companyName=:companyName, " +
-//                        "c.locatedCountry=:locatedCountry  where c.id=:id", Company.class).
-//                setParameter("companyName", newCompany.getCompanyName()).
-//                setParameter("locatedCountry", newCompany.getLocatedCountry()).
-//                setParameter(s"id", companyId).executeUpdate();
 
         Company company = findById(companyId);
         company.setCompanyName(newCompany.getCompanyName());

@@ -48,20 +48,18 @@ public class CourseController {
         return "redirect:/api/courses/find/by/"+companyId;
 
     }
-    @GetMapping("/update/{companyId}/{courseId}")
-    public String updateCourse(Model model, @PathVariable UUID companyId, @PathVariable UUID courseId){
+    @GetMapping("/update/{courseId}")
+    public String updateCourse(Model model, @PathVariable UUID courseId){
         Course course = courseService.findById(courseId);
-        Company company = companyService.findById(companyId);
         model.addAttribute("updateCourse", course);
-        model.addAttribute("updateCourse", company);
         return "courses/update-course";
     }
 
-
-
-
-
-
-
-
+    @PostMapping ("/update/{courseId}")
+    public String update(Course course, @PathVariable UUID courseId){
+        Course byId = courseService.findById(courseId);
+        UUID id = byId.getCompany().getId();
+        courseService.update(courseId, course);
+        return "redirect:/api/courses/find/by/" + id;
+    }
 }

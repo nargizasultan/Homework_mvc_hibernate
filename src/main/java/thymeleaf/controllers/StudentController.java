@@ -27,13 +27,13 @@ public class StudentController {
         List<Student> students = studentService.findByGroupId(groupId);
         model.addAttribute("students", students);
         model.addAttribute("groupId", groupId);
-        return "all-students";
+        return "students/all-students";
     }
     @GetMapping("/save/{groupId}")
     public String showStudentSavePage(@PathVariable UUID groupId, Model model){
         model.addAttribute("emptyStudent", new Student());
         model.addAttribute("groupId", groupId);
-        return "save-new-student";
+        return "students/save-new-student";
 
     }
     @PostMapping("/save/{groupId}")

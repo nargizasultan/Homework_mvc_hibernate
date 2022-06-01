@@ -44,4 +44,14 @@ public class CourseRepository {
     }
 
 
+    public void update(UUID courseID, Course newCourse) {
+        Course course1 = findById(courseID);
+
+        course1.setCourseName(newCourse.getCourseName());
+
+        course1.setDuration(newCourse.getDuration());
+
+        entityManager.persist(course1);
+
+    }
 }
