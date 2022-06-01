@@ -40,9 +40,7 @@ public class CompanyRepository {
     }
     @Transactional
     public void removeById(UUID companyId) {
-
-        entityManager.createQuery("delete from Company c where c.id = ?1").setParameter(1, companyId).executeUpdate();
-
+        entityManager.remove(entityManager.find(Company.class, companyId));
     }
     @Transactional
     public void update(UUID companyId, Company newCompany) {

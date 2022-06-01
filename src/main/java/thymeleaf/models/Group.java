@@ -26,7 +26,7 @@ public class Group {
     private String groupName;
     private String dateOfStart;
     private String dateOfFinish;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Course> courses=new ArrayList<>();
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -39,8 +39,6 @@ public class CourseController {
         model.addAttribute("companyId", companyId);
         model.addAttribute("emptyCourse", new Course());
         return "courses/save-new-course";
-
-
     }
     @PostMapping("/save/{companyId}")
     public String saveCourse(Course course, @PathVariable UUID companyId){

@@ -28,7 +28,7 @@ public class CompanyService {
     public List<Company> findAll() {
         return companyRepository.findAll();
     }
-    @Transactional
+
     public void removeById(UUID companyId) {
         companyRepository.removeById(companyId);
     }

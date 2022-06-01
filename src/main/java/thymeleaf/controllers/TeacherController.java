@@ -61,5 +61,14 @@ public class TeacherController {
         return "redirect:/api/teachers/find/by/" + id;
     }
 
+    @GetMapping("/delete/{teacherId}")
+    public String delete(@PathVariable UUID teacherId){
+        Teacher byId = teacherService.findById(teacherId);
+        UUID id = byId.getCourse().getId();
+        teacherService.removeById(teacherId);
+        return "api/teachers/find/by/"+id;
+
+    }
+
 
 }

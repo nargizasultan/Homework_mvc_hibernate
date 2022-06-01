@@ -36,6 +36,10 @@
                 <button>update</button>
             </a>
 
+            <a th:href="@{'/api/groups/delete/'+${group.id}}">
+                <button>delete</button>
+            </a>
+
         </td>
 
     </tr>
@@ -55,6 +59,13 @@
 <div>
     <a th:href="@{/api/companies}">
         <button>go back</button>
+    </a>
+</div>
+<br><br>
+
+<div>
+    <a th:href="@{'/api/courses/find/by/'+${courses.get(0).getCourses().get(0).getCompany().id}}">
+        <button>Go to Courses</button>
     </a>
 </div>
 

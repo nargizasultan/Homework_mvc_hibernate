@@ -21,7 +21,7 @@ public class Teacher {
     private String firstName;
     private String email;
     private String lastName;
-    @OneToOne(cascade = ALL)
+    @OneToOne
     private Course course;
 
 

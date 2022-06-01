@@ -24,9 +24,7 @@ public class Company {
     private String companyName;
     private String locatedCountry;
 
-    @OneToMany(mappedBy = "company",
-            cascade = {MERGE, DETACH,
-                    REMOVE,REFRESH} )
+    @OneToMany(mappedBy = "company", cascade = {MERGE, REMOVE}, orphanRemoval = true)
     private List<Course> courses = new ArrayList<>();
 
     public void setCourse(Course course) {

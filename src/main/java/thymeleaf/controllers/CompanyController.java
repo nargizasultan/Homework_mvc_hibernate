@@ -21,41 +21,44 @@ public class CompanyController {
 
 
     @ModelAttribute("companyList")
-    public List<Company>findAllCompanies(){
+    public List<Company> findAllCompanies() {
         return companyService.findAll();
     }
+
     @GetMapping
-    public String findAll(){
+    public String findAll() {
         return "companies/all-companies";
     }
+
     @GetMapping("/save")
-    public String saveCompany(Model model){
+    public String saveCompany(Model model) {
         model.addAttribute("emptyCompany", new Company());
         return "companies/save-new-company";
     }
+
     @PostMapping("/save")
-    public String save(Company company){
+    public String save(Company company) {
         companyService.save(company);
         return "redirect:/api/companies";
     }
 
     @GetMapping("/update/{companyId}")
-    public String updateCompany(Model model, @PathVariable ("companyId")UUID companyId){
+    public String updateCompany(Model model, @PathVariable("companyId") UUID companyId) {
 
         model.addAttribute("updateCompany", companyService.findById(companyId));
         return "companies/update-company";
     }
-    @PostMapping ("/update/{companyId}")
+
+    @PostMapping("/update/{companyId}")
     public String update(Company company,
-                             @PathVariable ("companyId")UUID companyId){
+                         @PathVariable("companyId") UUID companyId) {
         companyService.update(companyId, company);
         return "redirect:/api/companies";
     }
 
     @GetMapping("/delete/{companyId}")
-    public String delete(@PathVariable UUID companyId){
-        Company company = companyService.findById(companyId);
-        Course course = company.getCourses().get(0);
+    public String delete(@PathVariable UUID companyId) {
+
         companyService.removeById(companyId);
 
         return "redirect:/api/companies";

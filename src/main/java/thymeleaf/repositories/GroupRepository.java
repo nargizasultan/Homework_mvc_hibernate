@@ -41,9 +41,7 @@ public class GroupRepository {
     }
     @Transactional
     public void removeById(UUID groupId) {
-        entityManager.createQuery("delete from Group g where g.id = ?1")
-                .setParameter(1, groupId)
-                .executeUpdate();
+        entityManager.remove(entityManager.find(Group.class,groupId));
     }
     @Transactional
     public List<Group> findByCourseId(UUID courseId) {

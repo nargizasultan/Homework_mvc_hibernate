@@ -60,6 +60,13 @@ public class StudentController {
 
         return "redirect:/api/students/find/by/" + id;
     }
+    @GetMapping ("/delete/{studentId}")
+        public String delete(@PathVariable UUID studentId){
+        Student byId = studentService.findById(studentId);
+        UUID id = byId.getGroup().getId();
+        studentService.removeById(studentId);
+        return "redirect:/api/students/find/by/"+id;
+    }
 
 
 }

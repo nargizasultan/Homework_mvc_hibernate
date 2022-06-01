@@ -37,9 +37,7 @@ public class TeacherRepository {
     }
     @Transactional
     public void removeById(UUID teacherId) {
-        entityManager.createQuery("delete from Teacher t where t.id = ?1")
-                .setParameter(1, teacherId)
-                .executeUpdate();
+        entityManager.remove(entityManager.find(Teacher.class, teacherId));
     }
     @Transactional
 
