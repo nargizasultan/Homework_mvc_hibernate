@@ -18,19 +18,19 @@ import static javax.persistence.CascadeType.*;
 @ToString
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String courseName;
 
     private int duration;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private Company company;
-    @ManyToMany(mappedBy = "courses", cascade = {PERSIST,DETACH,REMOVE})
+    @ManyToMany(mappedBy = "courses", cascade = {REMOVE})
     private List<Group> groups = new ArrayList<>();
 
     @OneToOne(mappedBy = "course",
-            cascade = {PERSIST,MERGE,DETACH,REFRESH,REMOVE},
+            cascade = {REMOVE},
             orphanRemoval = true)
     private Teacher teacher;
 

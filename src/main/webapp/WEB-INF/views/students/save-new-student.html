@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Save Student</title>
+    <style>
+        body {
+            background-image: url('https://kurspresent.ru/assets/image-cache/images/custom-photos//kurspresent-data/475-2019-05-20/video-fon-powerpoint-animirovannyie-oblaka-kurspresent-ru.15dcaa2f.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 <body>
 <!--private UUID id;
@@ -31,17 +39,10 @@
     <input id="lastName" th:field="${emptyStudent.lastName}" placeholder="example">
     <br><br>
 
-
-<!--    <input type="radio" value="ONLINE" th:field="*{emptyStudent.studyFormat}" id="onlineFormat">-->
-<!--    <label for="onlineFormat">online</label>-->
-<!--    <input type="radio" value="OFFLINE" th:field="*{emptyStudent.studyFormat}" id="offlineFormat">-->
-<!--    <label for="offlineFormat">offline</label>-->
-<!--    <br><br>-->
-
-    <label for="studyFormat">studyFormat</label>
-    <input id="studyFormat"  th:field="${emptyStudent.studyFormat}" placeholder="example">
-    <br><br>
-
+    <input type="radio" value="ONLINE" th:field="${emptyStudent.studyFormat}" id="onlineFormat">
+    <label for="onlineFormat">online</label>
+    <input type="radio" value="OFFLINE" th:field="${emptyStudent.studyFormat}" id="offlineFormat">
+    <label for="offlineFormat">offline</label>
 
 
 

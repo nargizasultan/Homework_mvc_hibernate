@@ -62,7 +62,7 @@ public class HibernateConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty(Environment.HBM2DDL_AUTO, "create");
+        properties.setProperty(Environment.HBM2DDL_AUTO, "update");
         properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         return properties;
     }

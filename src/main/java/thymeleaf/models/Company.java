@@ -19,12 +19,12 @@ import static javax.persistence.CascadeType.*;
 @ToString
 public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String companyName;
     private String locatedCountry;
 
-    @OneToMany(mappedBy = "company", cascade = {MERGE, REMOVE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "company", cascade = {REMOVE}, orphanRemoval = true)
     private List<Course> courses = new ArrayList<>();
 
     public void setCourse(Course course) {
