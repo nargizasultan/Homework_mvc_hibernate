@@ -21,10 +21,7 @@ public class GroupController {
     }
 
 
-    @ModelAttribute("groups")
-    public List<Group> findAllGroups(){
-        return groupService.findAll();
-    }
+
     @GetMapping("find/by/{courseId}")
     public String findAllGroupsByCourseId(@PathVariable Long courseId, Model model) {
 

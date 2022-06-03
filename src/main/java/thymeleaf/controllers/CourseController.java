@@ -21,10 +21,7 @@ public class CourseController {
         this.courseService = courseService;
         this.companyService = companyService;
     }
-    @ModelAttribute("courses")
-    public List<Course>courses(){
-        return courseService.findAll();
-    }
+
     @GetMapping("find/by/{companyId}")
     public String findAllCoursesByCompanyId(@PathVariable Long companyId, Model model) {
 

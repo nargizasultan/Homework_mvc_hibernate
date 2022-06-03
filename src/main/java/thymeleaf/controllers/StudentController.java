@@ -19,10 +19,7 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-    @ModelAttribute("studentList")
-    public List<Student> courses(){
-        return studentService.findAll();
-    }
+
     @GetMapping("find/by/{groupId}")
     public String findAllStudentsByGroupId(@PathVariable Long groupId, Model model){
         List<Student> students = studentService.findByGroupId(groupId);
