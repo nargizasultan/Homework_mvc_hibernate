@@ -42,7 +42,7 @@ public class TeacherRepository {
     @Transactional
 
     public List<Teacher> findByCourseId(Long courseId) {
-        return entityManager.createQuery("select t from Teacher t join Course c on c.id=?1", Teacher.class).setParameter(1, courseId).getResultList();
+        return entityManager.createQuery("select t from Teacher t where t.course.id=?1", Teacher.class).setParameter(1, courseId).getResultList();
     }
     @Transactional
     public void update(Long teacherId, Teacher teacher) {

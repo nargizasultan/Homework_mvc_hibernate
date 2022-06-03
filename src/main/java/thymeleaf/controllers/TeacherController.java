@@ -18,10 +18,7 @@ public class TeacherController {
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
-    @ModelAttribute("teachers")
-    public List<Teacher>teachers(){
-        return teacherService.findAll();
-    }
+
     @GetMapping("/find/by/{courseId}")
     public String findTeacherByCourseId(@PathVariable Long courseId, Model model){
         List<Teacher> teacher = teacherService.findByCourseId(courseId);

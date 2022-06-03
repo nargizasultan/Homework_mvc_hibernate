@@ -43,7 +43,7 @@ public class StudentRepository {
 
     @Transactional
     public List<Student> findByGroupId(Long groupId) {
-        return entityManager.createQuery("select s from Student s join Group g on g.id=?1", Student.class).setParameter(1, groupId).getResultList();
+        return entityManager.createQuery("select s from Student s where s.group.id=?1", Student.class).setParameter(1, groupId).getResultList();
     }
     @Transactional
     public void update(Long studentId, Student student) {
