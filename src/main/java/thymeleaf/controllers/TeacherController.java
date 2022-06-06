@@ -63,7 +63,7 @@ public class TeacherController {
         Teacher byId = teacherService.findById(teacherId);
         Long id = byId.getCourse().getId();
         teacherService.removeById(teacherId);
-        return "api/teachers/find/by/"+id;
+        return "redirect:/api/teachers/find/by/"+id;
 
     }
 
